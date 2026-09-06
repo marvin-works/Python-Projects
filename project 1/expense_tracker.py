@@ -53,7 +53,7 @@ def main():
             tracker.add_expense(expense)
             print("Expense added successfully.")
         elif choice == "2":
-            index = int(input("Enter the expense inde to remove: ")) - 1
+            index = int(input("Enter the expense index to remove: ")) - 1
             tracker.remove_expense(index)
         elif choice == "3":
             tracker.view_expenses()
