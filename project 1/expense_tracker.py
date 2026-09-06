@@ -1,4 +1,4 @@
-
+import sqlite3
 
 class Expense:
     def __init__(self, date, description, amount):
