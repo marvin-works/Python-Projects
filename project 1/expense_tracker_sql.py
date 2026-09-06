@@ -9,10 +9,26 @@ class Expense:
 class ExpenseTracker:
     def __init__(self):
         self.connection = sqlite3.connect("expenses.db")
-        self.cursor = self.cpnnection.cursor()
+        self.cursor = self.connection.cursor()
+        self.create_table()
+
+    def create_table(self):
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS expenses(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT NOT NULL,
+                description TEXT NOT NULL,
+                amount REAL NOT NULL
+            )
+        """)
+        self.connection.commit()
 
     def add_expense(self, expense):
-        self.expenses.append(expense)
+        self.cursor.execute("""
+            INSERT INTO expenses (date, description, amount)
+            VALUES (?, ?, ?)
+        """, (expense.date, expense.description, expense.amount))
+        self.connection.commit()
 
     def remove_expense(self, index):
         if 0 <= index <len(self.expenses):
