@@ -1,5 +1,3 @@
-import sqlite3
-
 class Expense:
     def __init__(self, date, description, amount):
         self.date = date
@@ -30,7 +28,7 @@ class ExpenseTracker:
 
     def total_expenses(self):
         total = sum(expense.amount for expense in self.expenses)
-        print(f"Total Expenses: ${total:.2f}")
+        print(f"Total Expenses: #{total:.2f}")
 
 def main():
     tracker = ExpenseTracker()
